@@ -42,9 +42,15 @@
             <td>{{ $time_to_study_left }}</td>
         </tr>
         <tr>
-            <td>Semester sekarang</td>
+            <td>Semester <b>{{ $current_semester }}</b></td>
             <td>:</td>
-            <td>{{ $current_semester }}</td>
+            <td>
+                @if ($current_semester <= 3)
+                    <p>Masih Awal, Kejar TAK</p>
+                @elseif($current_semester > 3)
+                    <p>Jangan main-main, kurang-kurangi main game!</p>
+                @endif
+            </td>
         </tr>
         <tr>
             <td>Cita - cita</td>
