@@ -9,9 +9,25 @@ class QuestionController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        // $request->validate(
+        //     [
+        //         'nama'  => 'required|max:10',
+        //         'email' => ['required', 'email'],
+        //         'pertanyaan' => 'required|max:300|min:8',
+        //     ],
+        //     [
+        //         'nama.required' => 'Nama gabole kosong',
+        //         'email.required' => 'Email ga valid',
+        //         'pertanyaan.required' => 'Pertanyaan belum diisi'
+        //     ]
+        // );
+
+        // $data['nama'] = $request->nama;
+        // $data['email'] = $request->email;
+        // $data['pertanyaan'] = $request->pertanyaan;
+        // return view("home-question-respon", $data);
     }
 
     /**
@@ -45,7 +61,7 @@ class QuestionController extends Controller
         $data['email'] = $request->email;
         $data['pertanyaan'] = $request->pertanyaan;
 
-        return view('home-question-respon', $data);
+        return redirect()->route('home')->with('info', 'Pertanyaan berhasil dikirim');
     }
 
     /**

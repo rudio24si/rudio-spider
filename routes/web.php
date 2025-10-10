@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MahasiswaController;
@@ -35,7 +36,10 @@ Route::get('/about', function () {
 
 Route::get('/mahasiswa/show/{param2?}', [MatakuliahController::class, 'show']);
 
-Route::get('/home', [HomeController::class, 'index']);
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/peg', [PegawaiController::class, 'index']);
 
+// Route::get('/question/respon', [QuestionController::class, 'index'])->name('home-question-respon');
 Route::post('question/store', [QuestionController::class, 'store'])->name('question.store');
+
+Route::get('dashboard',[DashboardController::class, 'index'])->name('dashboard');

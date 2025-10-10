@@ -1,0 +1,9 @@
+
+@font-face {
+    font-family: 'MyCustomFont';
+    src: url('assets/fonts/CoralPixels-Regular.ttf');
+}
+
+.font-custom{
+    font-family: 'MyCustomFont';
+}
