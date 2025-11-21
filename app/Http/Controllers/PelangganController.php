@@ -11,9 +11,12 @@ class PelangganController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data['dataPelanggan'] = Pelanggan::all();
+        $filterableColums = ['gender'];
+        $searchableColumns = ['first_name', 'last_name', 'email'];
+
+        $data['dataPelanggan'] = Pelanggan::filter($request, $filterableColums)->search($request, $searchableColumns)->paginate(10)->withQueryString();
         return view('admin.pelanggan.index', $data);
     }
 
@@ -68,7 +71,7 @@ class PelangganController extends Controller
     public function update(Request $request, string $id)
     {
         $pelanggan_id = $id;
-        $pelanggan = Pelanggan::findOrFail($pelanggan_id);  
+        $pelanggan = Pelanggan::findOrFail($pelanggan_id);
 
         $pelanggan->first_name = $request->first_name;
         $pelanggan->last_name = $request->last_name;
